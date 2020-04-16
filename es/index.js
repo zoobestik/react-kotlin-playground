@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createElement } from 'react';
 import PropTypes from 'prop-types';
 import playground from 'kotlin-playground';
 
@@ -42,7 +42,7 @@ class ReactKotlinPlayground extends Component {
 
     render() {
         const [code, [...events], ...props] = this.props;
-        return <code { ...props }>{ code }</code>;
+        return createElement('code', props, code);
     }
 }
 

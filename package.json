@@ -2,7 +2,12 @@
   "name": "react-kotlin-playground",
   "version": "0.0.1",
   "description": "React wrapper for kotlin playground",
-  "main": "src/index.js",
+  "main": "./dist/main.js",
+  "type": "module",
+  "exports": {
+    "import": "./es/index.js",
+    "require": "./dist/main.js"
+  },
   "scripts": {
     "dist": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
