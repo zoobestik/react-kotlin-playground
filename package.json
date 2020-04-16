@@ -1,0 +1,38 @@
+{
+  "name": "react-kotlin-playground",
+  "version": "0.0.1",
+  "description": "React wrapper for kotlin playground",
+  "main": "src/index.js",
+  "scripts": {
+    "dist": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zoobestik/react-kotlin-playground.git"
+  },
+  "keywords": [
+    "react",
+    "kotlin"
+  ],
+  "author": "zoobestik <kb.chernenko@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoobestik/react-kotlin-playground/issues"
+  },
+  "homepage": "https://github.com/zoobestik/react-kotlin-playground#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "peerDependencies": {
+    "kotlin-playground": "^1.20.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.0.0"
+  }
+}

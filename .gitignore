@@ -1,0 +1,15 @@
+# system files
+.DS_Store
+.idea
+*.iml
+Thumbs.db
+*.swp
+
+# packages and libs
+node_modules
+npm-debug.log
+package-lock.json
+
+.eslintcache
+
+dist
