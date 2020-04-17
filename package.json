@@ -6,7 +6,9 @@
   "license": "MIT",
   "keywords": [
     "react",
-    "kotlin"
+    "kotlin",
+    "playground",
+    "component"
   ],
   "homepage": "https://github.com/zoobestik/react-kotlin-playground#readme",
   "bugs": {

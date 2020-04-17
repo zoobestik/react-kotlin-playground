@@ -1,4 +1,4 @@
-# CSSO Webpack Plugin
+# React Kotlin Playground
 
 [![npm][npm]][npm-url]
 [![dependencies](https://img.shields.io/david/zoobestik/react-kotlin-playground.svg)](https://david-dm.org/zoobestik/react-kotlin-playground)
