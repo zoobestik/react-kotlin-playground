@@ -1,7 +1,8 @@
 # React Kotlin Playground
 
 [![npm][npm]][npm-url]
-[![dependencies](https://img.shields.io/david/zoobestik/react-kotlin-playground.svg)](https://david-dm.org/zoobestik/react-kotlin-playground)
+[![dependencies](https://david-dm.org/zoobestik/react-kotlin-playground/status.svg)](https://david-dm.org/zoobestik/react-kotlin-playground)
+[![dependencies](https://david-dm.org/zoobestik/react-kotlin-playground/peer-status.svg)](https://david-dm.org/zoobestik/react-kotlin-playground)
 [![downloads](https://img.shields.io/npm/dm/react-kotlin-playground.svg)](http://npm-stats.com/~packages/react-kotlin-playground)
 
 React wrapper for [kotlin-playground](https://github.com/JetBrains/kotlin-playground#options) widget.
@@ -14,20 +15,26 @@ npm i --save react-kotlin-playground kotlin-playground
 
 ## Usage
 
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import KotlinPlayground from 'react-kotlin-playground';
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+import KotlinPlayground from "react-kotlin-playground";
+// or for modern bundle:
+// import KotlinPlayground from 'react-kotlin-playground/es';
 
-ReactDOM.render(<KotlinPlayground mode="kotlin">
-    <code>
-        fun main(args: Array<String>) {
-        //sampleStart
-            println("Hello World")
-        //sampleEnd
-        }
-    </code>
-</KotlinPlayground>, container);
+ReactDOM.render(
+    <KotlinPlayground mode="kotlin">
+        <code>
+            fun main(args: Array&lt;String&gt;){" "}
+            {
+                //sampleStart
+                println("Hello World")
+                //sampleEnd
+            }
+        </code>
+    </KotlinPlayground>,
+    container
+);
 ```
 
 ## API
