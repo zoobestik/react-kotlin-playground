@@ -2,13 +2,12 @@ name: Node.js CI
 
 on:
     push:
-        branches: [ master ]
+        branches: [master]
     pull_request:
-        branches: [ master ]
+        branches: [master]
 
 jobs:
     build:
-
         runs-on: ubuntu-latest
 
         strategy:
@@ -22,7 +21,8 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: npm install
-            - run: npm run lint
-                #    - run: npm test
+            - run:
+                  npm run lint
+                  #    - run: npm test
               env:
                   CI: true
