@@ -19,19 +19,17 @@ npm i --save react-kotlin-playground kotlin-playground
 import React from "react";
 import ReactDOM from "react-dom";
 import KotlinPlayground from "react-kotlin-playground";
-// or for modern bundle:
+// For modern bundle:
 // import KotlinPlayground from 'react-kotlin-playground/es';
 
 ReactDOM.render(
     <KotlinPlayground mode="kotlin">
-        <code>
-            fun main(args: Array&lt;String&gt;){" "}
-            {
-                //sampleStart
-                println("Hello World")
-                //sampleEnd
-            }
-        </code>
+        fun main(args: Array&lt;String&gt;){" "}
+        {
+            //sampleStart
+            println("Hello World")
+            //sampleEnd
+        }
     </KotlinPlayground>,
     container
 );
@@ -39,9 +37,14 @@ ReactDOM.render(
 
 ## API
 
-Supported all options from [original library](https://github.com/JetBrains/kotlin-playground#options)
+| Name          | Type   | Default | Description                     |
+| ------------- | ------ | ------- | ------------------------------- |
+| **className** | string | null    | Add classes for codewrapper     |
+| **children**  | node   |         | **Initial** source code for run |
 
-As in react props style - without `data-` prefix and in camelCase, like
+Plus all [options](https://github.com/JetBrains/kotlin-playground#customizing-editors) and [events](https://github.com/JetBrains/kotlin-playground#options) from original library:
+
+in react props style - without `data-` prefix and in camelCase, like
 
 ```jsx
 <KotlinPlayground
@@ -51,7 +54,7 @@ As in react props style - without `data-` prefix and in camelCase, like
 >...</KotlinPlayground>
 ```
 
-**Or** as html attrs style - like in original library:
+**or** in html attrs style - like in original library:
 
 ```jsx
 <KotlinPlayground

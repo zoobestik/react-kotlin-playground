@@ -64,7 +64,7 @@ class ReactKotlinPlayground extends Component {
     }
 
     render() {
-        const { children, ...props } = this.props;
+        const { className, children, ...props } = this.props;
 
         const elementProps = Object.keys(props).reduce((result, name) => {
             if (EVENTS.indexOf(name) === -1)
@@ -73,9 +73,9 @@ class ReactKotlinPlayground extends Component {
         }, {});
 
         return createElement(
-            "code",
-            { ...elementProps, ref: this.code },
-            children
+            "div",
+            { className },
+            createElement("code", { ...elementProps, ref: this.code }, children)
         );
     }
 }
@@ -91,7 +91,8 @@ function cloneProps(props) {
 }
 
 ReactKotlinPlayground.propTypes = {
-    children: PropTypes.node,
+    className: PropTypes.string,
+    children: PropTypes.node.required,
 
     ...eventsPropTypes,
 
