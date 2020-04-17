@@ -2,7 +2,7 @@ import React, { Component, createElement, createRef } from 'react';
 import PropTypes from 'prop-types';
 import playground from 'kotlin-playground';
 
-const events = [
+const EVENTS = [
     'onChange',
     'onConsoleOpen',
     'onConsoleClose',
@@ -12,7 +12,27 @@ const events = [
     'onError',
 ];
 
-const eventsPropTypes = events.reduce((types, name) => {
+const DATA_ATTRS = [
+    'version',
+    'targetPlatform',
+    'highlightOnly',
+    'jsLibs',
+    'minCompilerVersion',
+    'autocomplete',
+    'outputHeight',
+];
+
+function upper2dash(str) {
+    return str.replace(/[A-Z]/g, '-$&').toLowerCase();
+}
+
+function normalizeAttribute(name) {
+    let attr = name;
+    if (DATA_ATTRS.indexOf(name) !== -1) attr = 'data-' + attr;
+    return upper2dash(attr);
+}
+
+const eventsPropTypes = EVENTS.reduce((types, name) => {
     types[name] = PropTypes.func;
     return types;
 }, {});
@@ -23,7 +43,7 @@ class ReactKotlinPlayground extends Component {
 
         this.code = createRef();
 
-        events.forEach(event => {
+        EVENTS.forEach(event => {
             if (!this[event]) this[event] = this.createProxy(event);
         });
     }
@@ -35,7 +55,7 @@ class ReactKotlinPlayground extends Component {
     }
 
     componentDidMount() {
-        const eventFunctions = events.reduce((events, name) => {
+        const eventFunctions = EVENTS.reduce((events, name) => {
             events[name] = this[name] || this.props[name];
             return events;
         }, {})
@@ -47,7 +67,7 @@ class ReactKotlinPlayground extends Component {
         const { children, ...props } = this.props;
 
         const elementProps = Object.keys(props).reduce((result, name) => {
-            if (events.indexOf(name) === -1) result[name] = props[name];
+            if (EVENTS.indexOf(name) === -1) result[normalizeAttribute(name)] = props[name];
             return result;
         }, {});
 
@@ -55,28 +75,38 @@ class ReactKotlinPlayground extends Component {
     }
 }
 
+function cloneProps(props) {
+    const clonedProps = { ...props };
+
+    Object.keys(props).forEach(name => {
+        clonedProps[normalizeAttribute(name)] = props[name];
+    });
+
+    return clonedProps;
+}
+
 ReactKotlinPlayground.propTypes = {
     children: PropTypes.node,
-
     ...eventsPropTypes,
-
-    'data-version': PropTypes.string,
-    args: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-    'data-target-platform': PropTypes.oneOf(['junit', 'canvas', 'js', 'java']),
-    'data-highlight-only': PropTypes.oneOf(['nocursor']),
-    'data-js-libs': PropTypes.string,
-    'auto-indent': PropTypes.bool,
-    theme: PropTypes.string,
-    mode: PropTypes.oneOf(['kotlin', 'js', 'java', 'groovy', 'xml', 'c', 'shell', 'swift', 'obj-c']),
-    'data-min-compiler-version': PropTypes.string,
-    'data-autocomplete': PropTypes.bool,
-    'highlight-on-fly': PropTypes.bool,
-    indent: PropTypes.number,
-    lines: PropTypes.bool,
-    from: PropTypes.number,
-    to: PropTypes.number,
-    'data-output-height': PropTypes.number,
-    'match-brackets': PropTypes.bool,
+    ...cloneProps({
+        version: PropTypes.string,
+        args: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+        targetPlatform: PropTypes.oneOf(['junit', 'canvas', 'js', 'java']),
+        highlightOnly: PropTypes.oneOf(['nocursor']),
+        jsLibs: PropTypes.string,
+        autoIndent: PropTypes.bool,
+        theme: PropTypes.string,
+        mode: PropTypes.oneOf(['kotlin', 'js', 'java', 'groovy', 'xml', 'c', 'shell', 'swift', 'obj-c']),
+        minCompilerVersion: PropTypes.string,
+        autocomplete: PropTypes.bool,
+        highlightOnFly: PropTypes.bool,
+        indent: PropTypes.number,
+        lines: PropTypes.bool,
+        from: PropTypes.number,
+        to: PropTypes.number,
+        outputHeight: PropTypes.number,
+        matchBrackets: PropTypes.bool,
+    }),
 };
 
 export default ReactKotlinPlayground;
