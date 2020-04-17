@@ -1,16 +1,17 @@
 {
- "presets": [
-  [
-   "@babel/preset-env",
-   {
-    "targets": {
-     "ie": "11"
-    },
-    "loose": true,
-    "corejs": 2,
-    "useBuiltIns": "entry"
-   }
-  ],
-  "@babel/preset-react"
- ]
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "ie": "11",
+                    "node": "8"
+                },
+                "loose": true,
+                "corejs": 2,
+                "useBuiltIns": "entry"
+            }
+        ],
+        "@babel/preset-react"
+    ]
 }

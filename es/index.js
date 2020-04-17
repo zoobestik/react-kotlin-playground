@@ -92,7 +92,9 @@ function cloneProps(props) {
 
 ReactKotlinPlayground.propTypes = {
     children: PropTypes.node,
+
     ...eventsPropTypes,
+
     ...cloneProps({
         version: PropTypes.string,
         args: PropTypes.oneOfType([
