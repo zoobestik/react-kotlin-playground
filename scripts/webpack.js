@@ -1,7 +1,7 @@
 import path from "path";
 
 export default {
-    entry: './src/index.js',
+    entry: './es/index.js',
     output: {
         path: path.resolve(process.cwd(), 'dist'),
         filename: '[name].js',

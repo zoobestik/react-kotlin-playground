@@ -1,4 +1,4 @@
-import React, { Component, createElement } from 'react';
+import React, { Component, createElement, createRef } from 'react';
 import PropTypes from 'prop-types';
 import playground from 'kotlin-playground';
 
@@ -15,11 +15,14 @@ const events = [
 const eventsPropTypes = events.reduce((types, name) => {
     types[name] = PropTypes.func;
     return types;
-});
+}, {});
 
 class ReactKotlinPlayground extends Component {
     constructor(props, ...args) {
         super(props, ...args);
+
+        this.code = createRef();
+
         events.forEach(event => {
             if (!this[event]) this[event] = this.createProxy(event);
         });
@@ -37,23 +40,34 @@ class ReactKotlinPlayground extends Component {
             return events;
         }, {})
 
-        playground('code', eventFunctions);
+        playground(this.code.current, eventFunctions);
     }
 
     render() {
-        const [code, [...events], ...props] = this.props;
-        return createElement('code', props, code);
+        const { children, ...props } = this.props;
+
+        const elementProps = Object.keys(props).reduce((result, name) => {
+            if (events.indexOf(name) === -1) result[name] = props[name];
+            return result;
+        }, {});
+
+        return createElement('code', { ...elementProps, ref: this.code }, children);
     }
 }
 
 ReactKotlinPlayground.propTypes = {
-    code: PropTypes.string,
+    children: PropTypes.node,
 
     ...eventsPropTypes,
 
+    'data-version': PropTypes.string,
+    args: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+    'data-target-platform': PropTypes.oneOf(['junit', 'canvas', 'js', 'java']),
+    'data-highlight-only': PropTypes.oneOf(['nocursor']),
+    'data-js-libs': PropTypes.string,
     'auto-indent': PropTypes.bool,
-    theme: PropTypes.bool,
-    mode: PropTypes.oneOf('kotlin', 'js', 'java', 'groovy', 'xml', 'c', 'shell', 'swift', 'obj-c'),
+    theme: PropTypes.string,
+    mode: PropTypes.oneOf(['kotlin', 'js', 'java', 'groovy', 'xml', 'c', 'shell', 'swift', 'obj-c']),
     'data-min-compiler-version': PropTypes.string,
     'data-autocomplete': PropTypes.bool,
     'highlight-on-fly': PropTypes.bool,
