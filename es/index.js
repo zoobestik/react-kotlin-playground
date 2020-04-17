@@ -1,34 +1,34 @@
-import React, { Component, createElement, createRef } from 'react';
-import PropTypes from 'prop-types';
-import playground from 'kotlin-playground';
+import { Component, createElement, createRef } from "react";
+import PropTypes from "prop-types";
+import playground from "kotlin-playground";
 
 const EVENTS = [
-    'onChange',
-    'onConsoleOpen',
-    'onConsoleClose',
-    'getInstance',
-    'getJsCode',
-    'onRun',
-    'onError',
+    "onChange",
+    "onConsoleOpen",
+    "onConsoleClose",
+    "getInstance",
+    "getJsCode",
+    "onRun",
+    "onError",
 ];
 
 const DATA_ATTRS = [
-    'version',
-    'targetPlatform',
-    'highlightOnly',
-    'jsLibs',
-    'minCompilerVersion',
-    'autocomplete',
-    'outputHeight',
+    "version",
+    "targetPlatform",
+    "highlightOnly",
+    "jsLibs",
+    "minCompilerVersion",
+    "autocomplete",
+    "outputHeight",
 ];
 
 function upper2dash(str) {
-    return str.replace(/[A-Z]/g, '-$&').toLowerCase();
+    return str.replace(/[A-Z]/g, "-$&").toLowerCase();
 }
 
 function normalizeAttribute(name) {
     let attr = name;
-    if (DATA_ATTRS.indexOf(name) !== -1) attr = 'data-' + attr;
+    if (DATA_ATTRS.indexOf(name) !== -1) attr = "data-" + attr;
     return upper2dash(attr);
 }
 
@@ -43,22 +43,22 @@ class ReactKotlinPlayground extends Component {
 
         this.code = createRef();
 
-        EVENTS.forEach(event => {
+        EVENTS.forEach((event) => {
             if (!this[event]) this[event] = this.createProxy(event);
         });
     }
 
     createProxy(name) {
-        return ((...args) => {
+        return (...args) => {
             if (this.props[name]) this.props[name](...args);
-        });
+        };
     }
 
     componentDidMount() {
         const eventFunctions = EVENTS.reduce((events, name) => {
             events[name] = this[name] || this.props[name];
             return events;
-        }, {})
+        }, {});
 
         playground(this.code.current, eventFunctions);
     }
@@ -67,18 +67,23 @@ class ReactKotlinPlayground extends Component {
         const { children, ...props } = this.props;
 
         const elementProps = Object.keys(props).reduce((result, name) => {
-            if (EVENTS.indexOf(name) === -1) result[normalizeAttribute(name)] = props[name];
+            if (EVENTS.indexOf(name) === -1)
+                result[normalizeAttribute(name)] = props[name];
             return result;
         }, {});
 
-        return createElement('code', { ...elementProps, ref: this.code }, children);
+        return createElement(
+            "code",
+            { ...elementProps, ref: this.code },
+            children
+        );
     }
 }
 
 function cloneProps(props) {
     const clonedProps = { ...props };
 
-    Object.keys(props).forEach(name => {
+    Object.keys(props).forEach((name) => {
         clonedProps[normalizeAttribute(name)] = props[name];
     });
 
@@ -90,13 +95,26 @@ ReactKotlinPlayground.propTypes = {
     ...eventsPropTypes,
     ...cloneProps({
         version: PropTypes.string,
-        args: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-        targetPlatform: PropTypes.oneOf(['junit', 'canvas', 'js', 'java']),
-        highlightOnly: PropTypes.oneOf(['nocursor']),
+        args: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.arrayOf(PropTypes.string),
+        ]),
+        targetPlatform: PropTypes.oneOf(["junit", "canvas", "js", "java"]),
+        highlightOnly: PropTypes.oneOf(["nocursor"]),
         jsLibs: PropTypes.string,
         autoIndent: PropTypes.bool,
         theme: PropTypes.string,
-        mode: PropTypes.oneOf(['kotlin', 'js', 'java', 'groovy', 'xml', 'c', 'shell', 'swift', 'obj-c']),
+        mode: PropTypes.oneOf([
+            "kotlin",
+            "js",
+            "java",
+            "groovy",
+            "xml",
+            "c",
+            "shell",
+            "swift",
+            "obj-c",
+        ]),
         minCompilerVersion: PropTypes.string,
         autocomplete: PropTypes.bool,
         highlightOnFly: PropTypes.bool,

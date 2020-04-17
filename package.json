@@ -1,7 +1,21 @@
 {
   "name": "react-kotlin-playground",
   "version": "0.0.1",
+  "author": "zoobestik <kb.chernenko@gmail.com>",
   "description": "React wrapper for kotlin playground",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "kotlin"
+  ],
+  "homepage": "https://github.com/zoobestik/react-kotlin-playground#readme",
+  "bugs": {
+    "url": "https://github.com/zoobestik/react-kotlin-playground/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zoobestik/react-kotlin-playground.git"
+  },
   "main": "./dist/main.js",
   "type": "module",
   "exports": {
@@ -9,35 +23,38 @@
     "require": "./dist/main.js"
   },
   "scripts": {
-    "dist": "webpack --mode production",
+    "dist": "webpack --mode production --config webpack.cjs",
+    "lint": "eslint --cache --fix  --ext .js,.mjs .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/zoobestik/react-kotlin-playground.git"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
-  "keywords": [
-    "react",
-    "kotlin"
-  ],
-  "author": "zoobestik <kb.chernenko@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zoobestik/react-kotlin-playground/issues"
+  "lint-staged": {
+    "*.{js,mjs}": "eslint --cache --fix",
+    "*.{css,md}": "prettier --write ."
   },
-  "homepage": "https://github.com/zoobestik/react-kotlin-playground#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "@babel/register": "^7.9.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.3",
+    "prettier": "^2.0.4",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {
     "kotlin-playground": "^1.20.0",
     "prop-types": "^15.7.2",
-    "react": "^16.0.0"
+    "react": "^16.3.0"
   }
 }
