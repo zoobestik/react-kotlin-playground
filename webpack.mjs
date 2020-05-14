@@ -26,10 +26,10 @@ export default {
             amd: "prop-types",
         },
         "kotlin-playground": {
-            root: "playground",
+            root: "KotlinPlayground",
             commonjs: "kotlin-playground",
             commonjs2: "kotlin-playground",
-            amd: "kotlin-playground",
+            amd: "KotlinPlayground",
         },
     },
     module: {

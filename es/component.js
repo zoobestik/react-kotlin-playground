@@ -80,7 +80,13 @@ class ReactKotlinPlayground extends Component {
     }
 
     render() {
-        const { className, children, ...props } = this.props;
+        const {
+            className,
+            children,
+            //eslint-disable-next-line no-unused-vars
+            playground: _playground,
+            ...props
+        } = this.props;
 
         const elementProps = Object.keys(props).reduce((result, name) => {
             if (EVENTS.indexOf(name) === -1)
@@ -109,6 +115,7 @@ function cloneProps(props) {
 ReactKotlinPlayground.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node.required,
+    playground: PropTypes.func.required,
 
     ...eventsPropTypes,
 
