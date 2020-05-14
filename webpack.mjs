@@ -1,7 +1,10 @@
 import path from "path";
 
 export default {
-    entry: "./es/index.js",
+    entry: {
+        index: "./es/index.js",
+        component: "./es/component.js",
+    },
     output: {
         path: path.resolve(process.cwd(), "dist"),
         filename: "[name].js",
