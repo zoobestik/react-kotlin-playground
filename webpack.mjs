@@ -1,7 +1,10 @@
 import path from "path";
 
 export default {
-    entry: "./es/index.js",
+    entry: {
+        index: "./es/index.js",
+        component: "./es/component.js",
+    },
     output: {
         path: path.resolve(process.cwd(), "dist"),
         filename: "[name].js",
@@ -23,10 +26,10 @@ export default {
             amd: "prop-types",
         },
         "kotlin-playground": {
-            root: "playground",
+            root: "KotlinPlayground",
             commonjs: "kotlin-playground",
             commonjs2: "kotlin-playground",
-            amd: "kotlin-playground",
+            amd: "KotlinPlayground",
         },
     },
     module: {
