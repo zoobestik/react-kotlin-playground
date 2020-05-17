@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Test React Kotlin Playground</title>
-</head>
-<body>
-    <div id="app">
-        <b>RUN BEFORE OPEN:</b> <code>npm i --no-save react prop-types react-dom kotlin-playground</code>
-    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Test React Kotlin Playground</title>
+    </head>
+    <body>
+        <div id="app">
+            <b>RUN BEFORE OPEN:</b>
+            <code
+                >npm i --no-save react prop-types react-dom
+                kotlin-playground</code
+            >
+        </div>
 
-    <script src="node_modules/react/umd/react.production.min.js"></script>
-    <script src="node_modules/react-dom/umd/react-dom.production.min.js"></script>
-    <script src="node_modules/prop-types/prop-types.js"></script>
-    <script src="node_modules/kotlin-playground/dist/playground.js"></script>
-    <script src="dist/index.js"></script>
+        <script src="node_modules/react/umd/react.production.min.js"></script>
+        <script src="node_modules/react-dom/umd/react-dom.production.min.js"></script>
+        <script src="node_modules/prop-types/prop-types.js"></script>
+        <script src="node_modules/kotlin-playground/dist/playground.js"></script>
+        <script src="dist/index.js"></script>
 
-    <script type="module">
-        (async () => {
-            const { default: KotlinPlayground } = window["react-kotlin-playground"];
-            const node = document.getElementById('app');
+        <script type="module">
+            (async () => {
+                const { default: KotlinPlayground } = window[
+                    "react-kotlin-playground"
+                ];
+                const node = document.getElementById("app");
 
-            const props = {};
+                const props = {};
 
-            const code =`
+                const code = `
 class Contact(val id: Int, var email: String)
 
 fun main(args: Array<String>) {
@@ -31,8 +37,11 @@ fun main(args: Array<String>) {
 }
             `;
 
-            ReactDOM.render(React.createElement(KotlinPlayground, props, code), node);
-        })();
-    </script>
-</body>
+                ReactDOM.render(
+                    React.createElement(KotlinPlayground, props, code),
+                    node
+                );
+            })();
+        </script>
+    </body>
 </html>

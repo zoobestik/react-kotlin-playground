@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.0-beta.4
+
+-   Add dumb component.
+
 ## 0.1.0-beta.3
 
 -   Add `className` to supported props.
