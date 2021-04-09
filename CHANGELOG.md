@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.1.0-beta.5
+
+-   Add TS typings
+-   Fix require typings
+
 ## 0.1.0-beta.4
 
 -   Add dumb component.
