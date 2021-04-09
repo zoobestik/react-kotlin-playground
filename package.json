@@ -18,12 +18,12 @@
     "type": "git",
     "url": "git+ssh://git@github.com/zoobestik/react-kotlin-playground.git"
   },
-  "main": "./dist/main.js",
+  "main": "./dist/index.js",
   "type": "module",
   "exports": {
     "import": "./es/index.js",
     "require": "./dist/index.js",
-    "types": "./index.d.ts"
+    "types": "./dist/index.d.ts"
   },
   "scripts": {
     "dist": "webpack --mode production --config webpack.cjs",
@@ -47,6 +47,7 @@
     "@babel/preset-react": "^7.9.4",
     "@babel/register": "^7.9.0",
     "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^8.1.1",
     "core-js": "^3.6.5",
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",

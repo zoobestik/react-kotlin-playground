@@ -1,4 +1,7 @@
-import path from "path";
+import { resolve, join } from "path";
+import CopyPlugin from "copy-webpack-plugin";
+
+const outputPath = resolve(process.cwd(), "dist");
 
 export default {
     entry: {
@@ -6,12 +9,23 @@ export default {
         component: "./es/component.js",
     },
     output: {
-        path: path.resolve(process.cwd(), "dist"),
+        path: outputPath,
         filename: "[name].js",
         libraryTarget: "umd",
         library: "react-kotlin-playground",
         globalObject: "this",
     },
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: "./index.d.ts",
+                    to: join(outputPath, "index.d.ts"),
+                    force: true,
+                },
+            ],
+        }),
+    ],
     externals: {
         react: {
             root: "React",
