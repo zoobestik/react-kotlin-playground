@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.0-beta.6
+
+-   Add typings for dist 
+
 ## 0.1.0-beta.5
 
 -   Add TS typings
