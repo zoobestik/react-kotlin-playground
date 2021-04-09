@@ -5,12 +5,12 @@ const outputPath = resolve(process.cwd(), "dist");
 
 export default {
     entry: {
-        index: "./es/index.js",
-        component: "./es/component.js",
+        index: "./es/index.mjs",
+        component: "./es/component.mjs",
     },
     output: {
         path: outputPath,
-        filename: "[name].js",
+        filename: "[name].cjs",
         libraryTarget: "umd",
         library: "react-kotlin-playground",
         globalObject: "this",
@@ -49,7 +49,7 @@ export default {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|mjs)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
