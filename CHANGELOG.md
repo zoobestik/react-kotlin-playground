@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.0-beta.7
+
+-   Use .mjs of .cjs for import
+
 ## 0.1.0-beta.6
 
 -   Add typings for dist 
