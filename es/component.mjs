@@ -19,6 +19,7 @@ const DATA_ATTRS = [
     "minCompilerVersion",
     "autocomplete",
     "outputHeight",
+    "trackRunId",
 ];
 
 function upper2dash(str) {
