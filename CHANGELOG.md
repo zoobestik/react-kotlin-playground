@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.0-beta.10
+
+- support react@17-18
+
 ## 0.1.0-beta.9
 
 - support `crosslink`
