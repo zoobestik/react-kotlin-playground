@@ -20,6 +20,7 @@ const DATA_ATTRS = [
     "autocomplete",
     "outputHeight",
     "trackRunId",
+    "crosslink",
 ];
 
 function upper2dash(str) {
