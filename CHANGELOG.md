@@ -2,6 +2,10 @@
 
 ## 0.1.0-beta.8
 
+- support `crosslink`
+- 
+## 0.1.0-beta.8
+
 - support `trackRunId`
 
 ## 0.1.0-beta.7
