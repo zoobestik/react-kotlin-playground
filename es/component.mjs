@@ -9,7 +9,7 @@ const EVENTS = [
     "getJsCode",
     "onRun",
     "onError",
-    "server"
+    "server",
 ];
 
 const DATA_ATTRS = [
