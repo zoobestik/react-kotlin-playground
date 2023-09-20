@@ -8,8 +8,7 @@ const EVENTS = [
     "getInstance",
     "getJsCode",
     "onRun",
-    "onError",
-    "server",
+    "onError"
 ];
 
 const DATA_ATTRS = [
