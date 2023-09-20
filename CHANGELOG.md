@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.0-beta.12
+
+- rollback `server` support due to a bug
+
 ## 0.1.0-beta.11
 
 - support `server`
