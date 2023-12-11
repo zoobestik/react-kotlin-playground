@@ -1,6 +1,6 @@
 {
   "name": "react-kotlin-playground",
-  "version": "0.1.0-beta.12",
+  "version": "0.1.0-beta.13",
   "author": "zoobestik <kb.chernenko@gmail.com>",
   "description": "React wrapper for kotlin playground",
   "license": "MIT",
@@ -61,7 +61,7 @@
   },
   "peerDependencies": {
     "@types/react": "^16.3.0",
-    "kotlin-playground": "^1.26.0",
+    "kotlin-playground": "^1.29.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0"
   }
