@@ -21,6 +21,7 @@ const DATA_ATTRS = [
     "outputHeight",
     "trackRunId",
     "crosslink",
+    "mobileShorterHeight",
 ];
 
 function upper2dash(str) {
@@ -152,6 +153,7 @@ ReactKotlinPlayground.propTypes = {
         to: PropTypes.number,
         outputHeight: PropTypes.number,
         matchBrackets: PropTypes.bool,
+        mobileShorterHeight: PropTypes.number,
     }),
 };
 
