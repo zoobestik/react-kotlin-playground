@@ -30,7 +30,7 @@ export interface ReactKotlinPlaygroundProps {
     to: number,
     outputHeight: number,
     matchBrackets: boolean,
-    mobileShorterHeight: number,
+    shorterHeight: number,
 }
 
 declare const ReactKotlinPlayground: Component<ReactKotlinPlaygroundProps>;
