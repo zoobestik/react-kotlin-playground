@@ -21,7 +21,7 @@ const DATA_ATTRS = [
     "outputHeight",
     "trackRunId",
     "crosslink",
-    "mobileShorterHeight",
+    "shorterHeight",
 ];
 
 function upper2dash(str) {
